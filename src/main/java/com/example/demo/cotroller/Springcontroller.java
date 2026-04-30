@@ -23,8 +23,10 @@ public class Springcontroller {
 
 	@GetMapping("/user-full/{id}")
 	public Mono<ResponseEntity<Apiresponse>> getAll(@PathVariable Long id) {
-		return springservice.getAllData(id).map(u -> ResponseEntity.ok(u))
+		return springservice.getAllData(id).map(ResponseEntity::ok)
 				.defaultIfEmpty(ResponseEntity.notFound().build());
 	}
+	
+	
 
 }
